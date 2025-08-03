@@ -1,0 +1,4 @@
+memo.txt
+.env
+__pycache__/
+*.log
