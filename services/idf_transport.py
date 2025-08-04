@@ -30,6 +30,10 @@ def getLineStif(line: str) -> str:
         "stif":"C01386"
         },
         {
+        "human":"3 bis",
+        "stif":"C01386"
+        },
+        {
         "human":"4",
         "stif":"C01374"
         },
