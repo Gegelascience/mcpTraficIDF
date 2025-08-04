@@ -1,6 +1,6 @@
 # MCP Trafic IDF
 
-MCP with PRIM API implementation of Paris metro lines trafic informations.
+MCP with PRIM API implementation of Paris metro lines trafic informations (https://prim.iledefrance-mobilites.fr/fr/apis/idfm-ivtr-info_trafic).
 It use Gemini as a LLM.
 
 
