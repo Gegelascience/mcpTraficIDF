@@ -10,8 +10,14 @@ logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.DEBU
 from dotenv import dotenv_values
 config = dotenv_values(".env")
 
+serverSettings = {
+    "host":"localhost",
+    "port": 8000,
+}
+
 # Create an MCP server
-mcp = FastMCP("Demo")
+mcp = FastMCP("Demo",host=serverSettings["host"], port=serverSettings["port"])
+print(mcp.settings)
 
 
 # Add an addition tool
