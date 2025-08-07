@@ -12,108 +12,54 @@ def formatMsgIdf(listMsg:list) -> list:
 
 def getLineStif(line: str) -> str:
 
-    lineMapping = [
-        {
-        "human":"1",
-        "stif":"C01371"
-        },
-        {
-        "human":"2",
-        "stif":"C01372"
-        },
-        {
-        "human":"3",
-        "stif":"C01373"
-        },
-        {
-        "human":"3bis",
-        "stif":"C01386"
-        },
-        {
-        "human":"3 bis",
-        "stif":"C01386"
-        },
-        {
-        "human":"4",
-        "stif":"C01374"
-        },
-        {
-        "human":"5",
-        "stif":"C01375"
-        },
-        {
-        "human":"6",
-        "stif":"C01376"
-        },
-        {
-        "human":"7",
-        "stif":"C01377"
-        },
-        {
-        "human":"7bis",
-        "stif":"C01387"
-        },
-        {
-        "human":"8",
-        "stif":"C01378"
-        },
-        {
-        "human":"9",
-        "stif":"C01379"
-        },
-        {
-        "human":"10",
-        "stif":"C01380"
-        },
-        {
-        "human":"11",
-        "stif":"C01381"
-        },
-        {
-        "human":"12",
-        "stif":"C01382"
-        },
-        {
-        "human":"13",
-        "stif":"C01383"
-        },
-        {
-        "human":"14",
-        "stif":"C01384"
-        },
-        {
-        "human":"R",
-        "stif":"C01731"
-        },
-        {
-        "human":"H",
-        "stif":"C01737"
-        },
-        {
-        "human":"A",
-        "stif":"C01742"
-        },
-        {
-        "human":"B",
-        "stif":"C01743"
-        },
-        {
-        "human":"C",
-        "stif":"C01727"
-        },
-        {
-        "human":"D",
-        "stif":"C01728"
-        },
-        {
-        "human":"E",
-        "stif":"C01729"
-        },
-    ]
-
-    selected_line = [lineM for lineM in lineMapping if lineM["human"].upper() == line.upper()]
-
-    return selected_line
+    if line == "1":
+        return "C01371"
+    elif line == "2":
+        return "C01372"
+    elif line == "3":
+        return "C01373"
+    elif line == "3bis" or line == "3 bis":
+        return "C01386"
+    elif line == "4":
+        return "C01374"
+    elif line == "5":
+        return "C01375"
+    elif line == "6":
+        return "C01376"
+    elif line == "7":
+        return "C01377"
+    elif line == "7bis" or line == "7 bis":
+        return "C01387"
+    elif line == "8":
+        return "C01378"
+    elif line == "9":
+        return "C01379"
+    elif line == "10":
+        return "C01380"
+    elif line == "11":
+        return "C01381"
+    elif line == "12":
+        return "C01382"
+    elif line == "13":
+        return "C01383"
+    elif line == "14":
+        return "C01384"
+    elif line == "R":
+        return "C01731"
+    elif line == "H":
+        return "C01737"
+    elif line == "A" or line == "RER A":
+        return "C01742"
+    elif line == "B" or line == "RER B":
+        return "C01743"
+    elif line == "C" or line == "RER C":
+        return "C01727"
+    elif line == "D" or line == "RER D":
+        return "C01728"
+    elif line == "E" or line == "RER E":
+        return "C01729"
+    else:
+        return ""
 
 
 
@@ -133,7 +79,7 @@ def getLineInfo(apiKey:str, humainLine:str):
     
 
     queryParams = {
-        "LineRef": "STIF:Line::" +selected_line[0]["stif"] + ":",
+        "LineRef": "STIF:Line::" +selected_line + ":",
     }
 
     url = hostUrl+"/general-message"

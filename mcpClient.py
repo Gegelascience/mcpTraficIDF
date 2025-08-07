@@ -57,7 +57,6 @@ async def get_ia_answers(prompt:str,tools:list,session:ClientSession, mcp_prompt
                     possiblePrompt[0].name, arguments={key.name:json.dumps(mcp_data) for key in possiblePrompt[0].arguments}
                 )
 
-
                 responseFormated = client.models.generate_content(
                     model="gemini-2.5-flash-preview-05-20",
                     contents=formatedPrompt.messages[0].content,
