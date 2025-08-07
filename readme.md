@@ -19,10 +19,10 @@ GEMINI_API_KEY=<GEMINI APIKEY>
 ````
 
 
-## Run App
+## Run App (stdio)
 
 ````bash
-python3 mcpClient.py
+python3 mcpClientStdio.py
 ````
 
 The mcp server run in stdio mode so it is a subprocess of client process.
