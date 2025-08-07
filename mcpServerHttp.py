@@ -16,7 +16,7 @@ serverSettings = {
 }
 
 # Create an MCP server
-mcp = FastMCP("Demo",host=serverSettings["host"], port=serverSettings["port"])
+mcp = FastMCP("Demo",**serverSettings)
 print(mcp.settings)
 
 
