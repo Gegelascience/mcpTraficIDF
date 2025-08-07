@@ -45,6 +45,10 @@ async def get_ia_answers(prompt:str,tools:list,session:ClientSession, mcp_prompt
         # Parse and print formatted JSON result
         print("--- Formatted Result ---") # Add header for clarity
         try:
+            if not result.content:
+                print("No content returned from MCP server.")
+                return
+
             mcp_data = json.loads(result.content[0].text)
 
             possiblePrompt = [prompt for prompt in mcp_prompts.prompts if prompt.name == function_call.name + "_prompt"]
