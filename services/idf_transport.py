@@ -1,5 +1,9 @@
 import requests
 
+import logging
+logger = logging.getLogger(__name__)
+logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.DEBUG)
+
 hostUrl = "https://prim.iledefrance-mobilites.fr/marketplace"
 
 
@@ -63,7 +67,9 @@ def getLineStif(line: str) -> str:
 
 
 
-def getLineInfo(apiKey:str, humainLine:str):
+
+def getLineInfo(apiKey,humainLine:str):
+    logger.info(f"Using API Key: {apiKey}")
 
     selected_line = getLineStif(humainLine)
 
