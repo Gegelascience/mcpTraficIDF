@@ -24,7 +24,7 @@ server_params = StdioServerParameters(
 
 async def get_ia_answers(prompt:str,tools:list,session:ClientSession, mcp_prompts:ListPromptsResult):
     response = client.models.generate_content(
-        model="gemini-2.5-flash-preview-05-20",
+        model="gemini-2.5-flash",
         contents=prompt,
         config=types.GenerateContentConfig(
             temperature=0,
@@ -58,7 +58,7 @@ async def get_ia_answers(prompt:str,tools:list,session:ClientSession, mcp_prompt
                 )
 
                 responseFormated = client.models.generate_content(
-                    model="gemini-2.5-flash-preview-05-20",
+                    model="gemini-2.5-flash",
                     contents=formatedPrompt.messages[0].content,
                     config=types.GenerateContentConfig(
                         temperature=0,
