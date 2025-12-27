@@ -8,7 +8,7 @@ import logging
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.DEBUG)
 
-from dotenv import dotenv_values,load_dotenv
+from dotenv import load_dotenv
 
 
 
@@ -25,7 +25,7 @@ def sum(a: int, b: int) -> int:
 
 # get transport line information
 @mcp.tool()
-def get_transport_info(line: str) -> list:
+def get_transport_info(line: str) -> list[list[dict]] | str:
     """Get information about a transport line in the Paris region. It can be a metro line or a RER line"""
     apikey = os.environ.get("IDF_API_KEY", "")
     logger.info(f"API key: {apikey}")
@@ -61,5 +61,7 @@ if __name__ == "__main__":
     if args.mode == "stdio":
         mcp.run(transport="stdio")
     elif args.mode == "http":
+        mcp.settings.port = 8000
+        mcp.settings.host = "0.0.0.0"
         load_dotenv(".env")
         mcp.run(transport="streamable-http")

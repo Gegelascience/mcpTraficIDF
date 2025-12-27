@@ -7,7 +7,7 @@ logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.DEBU
 hostUrl = "https://prim.iledefrance-mobilites.fr/marketplace"
 
 
-def formatMsgIdf(listMsg:list) -> list:
+def formatMsgIdf(listMsg:list[str]) -> list[dict]:
     if len(listMsg) == 0:
         return []
     else:
@@ -68,7 +68,7 @@ def getLineStif(line: str) -> str:
 
 
 
-def getLineInfo(apiKey,humainLine:str):
+def getLineInfo(apiKey:str,humainLine:str) -> list[list[dict]] | str:
     logger.info(f"Using API Key: {apiKey}")
 
     selected_line = getLineStif(humainLine)

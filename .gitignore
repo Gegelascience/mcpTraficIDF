@@ -3,3 +3,4 @@ memo.txt
 __pycache__/
 *.log
 config/config.json
+.vscode
