@@ -19,13 +19,6 @@ GEMINI_API_KEY=<GEMINI APIKEY>
 ````
 
 
-## Run App (stdio server)
-
-````sh
-python3 mcpClientStdio.py
-````
-
-The mcp server run in stdio mode so it is a subprocess of client process.
 
 
 ## Run App (http streamable server)
@@ -33,7 +26,7 @@ The mcp server run in stdio mode so it is a subprocess of client process.
 First launch the server
 
 ````sh
-python3 mcpServerHttp.py
+python3 mcpServer.py
 ````
 The server will run on localhost on port 8000.
 
