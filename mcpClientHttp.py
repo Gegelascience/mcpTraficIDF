@@ -1,7 +1,6 @@
 # pip install google-generativeai mcp
 import asyncio
 from datetime import timedelta
-import os
 # Add json import for formatting output
 import json
 from google import genai
@@ -16,7 +15,7 @@ client = genai.Client(api_key=config.get("GEMINI_API_KEY"))
 
 
 
-async def get_ia_answers(prompt:str,tools:list,session:ClientSession, mcp_prompts:ListPromptsResult):
+async def get_ia_answers(prompt:str,tools:list[types.Tool],session:ClientSession, mcp_prompts:ListPromptsResult):
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=prompt,
@@ -29,8 +28,12 @@ async def get_ia_answers(prompt:str,tools:list,session:ClientSession, mcp_prompt
     
 
     # Remove raw response print
-    if response.candidates[0].content.parts[0].function_call:
+    if response and response.candidates and response.candidates[0].content and response.candidates[0].content.parts and response.candidates[0].content.parts[0].function_call:
         function_call = response.candidates[0].content.parts[0].function_call
+
+        if not function_call.name:
+            print("Model did not generate a function call.")
+            return
 
         result = await session.call_tool(
             function_call.name, arguments=dict(function_call.args)

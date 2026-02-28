@@ -67,6 +67,7 @@ class BasicAuthBackend(AuthenticationBackend):
             if token != token_ref:
                 raise AuthenticationError('Invalid token auth credentials')
         except (Exception) as exc:
+            logger.error(f"Authentication error: {exc}")
             raise AuthenticationError('Invalid token auth credentials')
 
         logger.info("Authorization OK")
